@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}alerta-Top10{% endblock %}
+{% block css %}
+    <!-- datatables -->
+    <link rel="stylesheet" href="{% static "datatables/dataTables.bootstrap.css" %}">
+{% endblock %}
+
+{% block content %}
+    <!-- template context -->
+    <aside class="main-sidebar">
+        <!-- sidebar -->
+        <section class="sidebar">
+{% include '3-left-menu.html' %}
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <!--li class="header">Menu</li-->
+                <!-- dashboard -->
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/">首页</a></li>
+                    </ul>
+                </li>
+                <!-- alerta-web-->
+                <li class="active treeview">
+                    <a href="#">
+                        <i class="fa fa-files-o"></i>
+                        <span>Alerta-Web</span>
+                        <span class="pull-right-container">
+                        <span class="label label-primary pull-right">4</span>
+                        </span>
+                    </a>
+                    <ul class="active treeview-menu">
+                        <li><a href="/alert"><i class="fa fa-circle-o"></i>alert</a></li>
+                        <li><a href="top10"><i class="fa fa-circle-o"></i>Top10</a></li>
+                        <li class="active"><a href="users"><i class="fa fa-circle-o"></i>alert</a></li>
+                        <li><a href="about"><i class="fa fa-circle-o"></i>alert</a></li>
+
+
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+{% endblock %}
+<!-- page script -->
+{% block js %}
+
+
+{% endblock %}

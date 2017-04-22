@@ -1,0 +1,147 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Alert Id : {{ alertid }}</h4>
+</div>
+<div class="modal-body">
+
+    <div>
+        <table id="alert-list" class="table table-bordered table-striped " width="100%">
+            <thead>
+            </thead>
+            <tbody>
+            <tr>
+                <th>Alert ID</th>
+                <td>{{ alert.id }}</td>
+            </tr>
+            <tr>
+                <th>Last Receive Alert ID</th>
+                <td>{{ alert.lastReceiveId }}</td>
+
+            </tr>
+            <tr>
+                <th>Alert ID</th>
+                <td>{{ alert.id }}</td>
+
+            </tr>
+            <tr>
+                <th>Last Receive Alert ID</th>
+                <td>{{ alert.lastReceiveId }}</td>
+
+            </tr>
+            <tr>
+                <th>createTime</th>
+                <td>{{ alert.createTime }}</td>
+
+            </tr>
+            <tr>
+                <th>receiveTime</th>
+                <td>{{ alert.receiveTime }}</td>
+
+            </tr>
+            <tr>
+                <th>lastReceiveTime</th>
+                <td>{{ alert.lastReceiveTime }}</td>
+
+            </tr>
+            <tr>
+                <th>Customer</th>
+                <td>{{ alert.customer }}</td>
+
+            </tr>
+            <tr>
+                <th>service</th>
+                <td>
+                    {% for line in alert.service %}
+                    {{ line }}
+                    {% endfor %}
+                </td>
+
+            </tr>
+            <tr>
+                <th>environment</th>
+                <td>{{ alert.environment }}</td>
+
+            </tr>
+            <tr>
+                <th>resource</th>
+                <td>{{ alert.resource }}</td>
+
+            </tr>
+            <tr>
+                <th>event</th>
+                <td>{{ alert.event }}</td>
+
+            </tr>
+            <tr>
+                <th>Correlate</th>
+                <td>{{ alert.correlate }}</td>
+
+            </tr>
+            <tr>
+                <th>group</th>
+                <td>{{ alert.group }}</td>
+
+            </tr>
+            <tr>
+                <th>severity</th>
+                <td>{{ alert.previousSeverity }}</td>
+
+            </tr>
+            <tr>
+                <th>status</th>
+                <td>{{ alert.severity }}</td>
+
+            </tr>
+            <tr>
+                <th>value</th>
+                <td>{{ alert.value }}</td>
+
+            </tr>
+            <tr>
+                <th>text</th>
+                <td>{{ alert.text }}</td>
+
+            </tr>
+            <tr>
+                <th>Trend Indication</th>
+                <td>{{ alert.trendIndication }}</td>
+
+            </tr>
+            <tr>
+                <th>Timeout</th>
+                <td>{{ alert.timeout }}</td>
+
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ alert.type }}</td>
+
+            </tr>
+            <tr>
+                <th>duplicateCount</th>
+                <td>{{ alert.duplicateCount }}</td>
+
+            </tr>
+            <tr>
+                <th>Repeat</th>
+                <td>{{ alert.repeat }}</td>
+
+            </tr>
+            <tr>
+                <th>Origin</th>
+                <td>{{ alert.origin }}</td>
+
+            </tr>
+            <tr>
+                <th>tags</th>
+                <td>{{ alert.tags }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn " data-dismiss="modal">Close</button>
+</div>

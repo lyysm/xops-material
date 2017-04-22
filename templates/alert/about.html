@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Alert-About{% endblock %}
+{% block css %}
+    <!-- JQuery DataTable Css -->
+    <link href="{% static "plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- template context -->
+
+    {% include '3-left-menu.html' %}
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Content Header (Page header) -->
+            <div class="block-header">
+                <h1>
+                    About
+                </h1>
+                <div class="body">
+                    <ol class="breadcrumb">
+                        <li><a href="/"><i class="material-icons">home</i></a> Home</li>
+                        <li class="active"><i class="material-icons">info</i> About</li>
+                    </ol>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-pink hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">playlist_add_check</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">API</div>
+                                <div class="text">{{ api }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-pink hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">playlist_add_check</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Build</div>
+                                <div class="text">{{ build }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-pink hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">playlist_add_check</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Server Time</div>
+                                <div class="text">{{ now }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-pink hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">playlist_add_check</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Uptime</div>
+                                <div class="text">{{ uptime }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <!-- Info boxes -->
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="header">
+                                <h2>
+                                    EXPORTABLE TABLE
+                                </h2>
+                                <ul class="header-dropdown m-r--5">
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                           role="button" aria-haspopup="true" aria-expanded="false">
+                                            <i class="material-icons">more_vert</i>
+                                        </a>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li><a href="javascript:void(0);">Action</a></li>
+                                            <li><a href="javascript:void(0);">Another action</a></li>
+                                            <li><a href="javascript:void(0);">Something else here</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="body">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Type</th>
+                                        <th>Group</th>
+                                        <th>Name</th>
+                                        <th>Value</th>
+                                        <th>Avg.Time</th>
+                                        <th>description</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for metric in data %}
+                                        <tr>
+
+                                            <td>{{ metric.title }}</td>
+                                            <td>{{ metric.type }}</td>
+                                            <td>{{ metric.group }}</td>
+                                            <td>{{ metric.name }}</td>
+                                            <td>{{ metric.value }} {{ metric.count }}</td>
+                                            {% if 'totalTime' in metric %}
+                                                <td>{% widthratio metric.totalTime metric.count 1 %}ms</td>
+                                            {% else %}
+                                                <td></td>
+                                            {% endif %}
+                                            <td>{{ metric.description }}</td>
+
+
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- container -->
+
+    </div>
+    </section>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+{% endblock %}
+<!-- my script -->
+{% block js %}
+    <script src="{% static "js/pages/tables/jquery-datatable.js" %}"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="{% static "plugins/jquery-datatable/jquery.dataTables.js" %}"></script>
+    <script src="{% static "plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js" %}"></script>
+    <script src="{% static "plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js" %}"></script>
+    <script src="{% static "plugins/jquery-datatable/extensions/export/buttons.flash.min.js" %}"></script>
+    <script src="{% static "plugins/jquery-datatable/extensions/export/jszip.min.js" %}"></script>
+    <script src="{% static "plugins/jquery-datatable/extensions/export/pdfmake.min.js" %}"></script>
+    <script src="{% static "plugins/jquery-datatable/extensions/export/vfs_fonts.js" %}"></script>
+    <script src="{% static "plugins/jquery-datatable/extensions/export/buttons.html5.min.js" %}"></script>
+    <script src="{% static "plugins/jquery-datatable/extensions/export/buttons.print.min.js" %}"></script>
+
+{% endblock %}

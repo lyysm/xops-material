@@ -1,0 +1,50 @@
+{% load static %}
+
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    {% include "4-user_info.html" %}
+    <!-- Menu -->
+    <div class="menu">
+        <ul class="list">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="active">
+                <a href="/">
+                    <i class="material-icons">home</i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">widgets</i>
+                    <span>alert</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="/alert" class="menu-toggle">
+                            <span>alert</span>
+                        </a>
+                    </li>
+                                        <li>
+                        <a href="/alert/top10" class="menu-toggle">
+                            <span>Top 10</span>
+                        </a>
+                    </li>
+                                        <li>
+                        <a href="/alert/user" class="menu-toggle">
+                            <span>user</span>
+                        </a>
+                    </li>
+                                        <li>
+                        <a href="/alert/about" class="menu-toggle">
+                            <span>about</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- #Menu -->
+    {% include "5-footer.html" %}
+</aside>
+<!-- #END# Left Sidebar -->
+
