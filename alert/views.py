@@ -26,7 +26,7 @@ def alert(request):
         alert['lastReceiveTime'] = lastReceiveTime
         alertid = alert['id']
         print alertid
-    return render(request, 'alert/alert.html', {'alert_list':alert_result['alerts']})
+    return render(request, 'alert/alert.html', {'alert_list': alert_result['alerts']})
 # top10
 def top10(request):
     return render_to_response('alert/top10.html')
