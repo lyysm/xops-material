@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}IDC 机柜展示{% endblock %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+    <!-- template context -->
+
+    {% include '3-left-menu.html' %}
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section class="content" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+             xmlns="http://www.w3.org/1999/html">
+        <div class="container-fluid">
+            <!-- Content Header (Page header) -->
+            <div class="block-header">
+                <h2>
+                    <b>Alert</b>
+                </h2>
+
+                <!--ol class="breadcrumb">
+                    <li><a href="/"><i class="material-icons">home</i></a> Home</li>
+                    <li class="active"><i class="material-icons">info</i> Alert</li>
+                </ol-->
+            </div>
+        </div>
+        <div class="row clearfix">
+            <!-- Button Items -->
+            {% for key in zw %}
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                机柜--{{ key.0 }}
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="list-group">
+                                {% for a in key.1 %}
+                                    {% if a == "null" %}
+                                        <button class="list-group-item disabled"
+                                                style="border-top-width: 3px;border-bottom-width: 3px;padding-bottom: 6px;padding-top: 6px;">
+                                            空闲
+                                        </button>
+
+                                    {% else %}
+                                        <button class="list-group-item"
+                                                style="padding-right: 0px;padding-left: 0px;padding-bottom: 1px;padding-top: 1px;"
+                                                data-trigger="focus" data-container="body" data-toggle="popover"
+                                                data-html="true"
+                                                data-placement="right"
+                                                title="服务器信息"
+                                                data-content="位置：{{ a.place }} <br/> 主机名： {{ a.Host }} <br/>内网IP: {{ a.eth0 }} <br/> 公网ip： {{ a.eth1 }} <br/> SN号： {{ a.SN }}">
+                                            <img
+                                                    src="/static/images/cmdb/730xd.gif"
+                                                    class="img-responsive center-block">
+                                        </button>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- #END# Button Items -->
+    </section>
+{% endblock %}
+<!-- page script -->
+{% block js %}
+    <script src="{% static "js/pages/ui/tooltips-popovers.js" %}"></script>
+
+{% endblock %}
