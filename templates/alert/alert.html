@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block title %}alerta-web{% endblock %}
 {% block css %}
     <!-- Bootstrap Select Css -->
@@ -19,52 +18,51 @@
         <div class="container-fluid">
             <!-- Content Header (Page header) -->
             <div class="block-header">
-                <h1>
-                    Alert
-                </h1>
-                <ol class="breadcrumb">
+                <h2>
+                    <b>Alert</b>
+                </h2>
+
+                <!--ol class="breadcrumb">
                     <li><a href="/"><i class="material-icons">home</i></a> Home</li>
                     <li class="active"><i class="material-icons">info</i> Alert</li>
-                </ol>
+                </ol-->
             </div>
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="body">
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <select class="form-control show-tick">
-                                    <option value="">-- Please select --</option>
-                                    <option value="#">service</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control"/>
-                                        <label class="form-label">Search</label>
-                                    </div>
+                    <div class="body" style="padding-bottom: 55px;">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <select class="form-control show-tick">
+                                <option value="">-- Please select --</option>
+                                <option value="#">service</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control"/>
+                                    <label class="form-label">Search</label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <select class="form-control show-tick"
-                                        ng-options="item as item.name for item in show track by item.name"
-                                        ng-model="status"
-                                        ng-change="update()">
-                                    <option value="">-- Please select --</option>
-                                    <option value="#">open</option>
-                                    <option value="#">active</option>
-                                    <option value="#">close</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <button type="button" class="btn bg-blue btn-block waves-effect"
-                                        disabled="disabled"
-                                        ng-click="refresh()"
-                                        ng-disabled="autoRefresh">refreshText
-                                </button>
-                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <select class="form-control show-tick"
+                                    ng-options="item as item.name for item in show track by item.name"
+                                    ng-model="status"
+                                    ng-change="update()">
+                                <option value="">-- Please select --</option>
+                                <option value="#">open</option>
+                                <option value="#">active</option>
+                                <option value="#">close</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <button type="button" class="btn bg-blue btn-block waves-effect"
+                                    disabled="disabled"
+                                    ng-click="refresh()"
+                                    ng-disabled="autoRefresh">refreshText
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -75,7 +73,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="body">
-                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <table class="table table-bordered table-condensed table-striped table-hover js-basic-example dataTable">
                             <thead>
                             <tr>
                                 <th>详情</th>
@@ -93,37 +91,37 @@
                             <tbody>
                             {% for alert in alert_list %}
                                 <tr>
-                                    <th>
-                                        <div class="btn-group" role="group">
-                                            <a class="btn bg-red btn-circle waves-effect waves-circle waves-float">
-                                                <i class="glyphicon glyphicon-info-sign" data-toggle="modal"
-                                                   data-target="#Modal" href="/alert/details?id={{ alert.id }}"></i>
+                                    <th {{ alert.color }}>
+                                        <div class="btn-group btn-group-xs" role="group">
+                                            <a class="btn btn-default" data-toggle="modal"
+                                                   data-target="#Modal" href="/alert/details?id={{ alert.id }}">详情
                                             </a>
-                                            <button type="button" class="btn btn-default waves-effect">认领
-                                            </button>
+                                        <a class="btn btn-default ">认领
+                                        </a>
                                         </div>
-                                    </th>
-                                    <th>{{ alert.severity }}</th>
-                                    <th>{{ alert.status }}</th>
-                                    <th>{{ alert.lastReceiveTime }}</th>
-                                    <th>{{ alert.duplicateCount }}</th>
-                                    <th>
-                                        {% for line in alert.service %}
-                                            {{ line }}
-                                        {% endfor %}
-                                    </th>
-                                    <th>{{ alert.resource }}</th>
-                                    <th>{{ alert.event }}</th>
-                                    <th>{{ alert.value }}</th>
-                                    <th>{{ alert.text }}</th>
+
+                                </th>
+                                <th>{{ alert.severity }}</th>
+                                <th>{{ alert.status }}</th>
+                                <th>{{ alert.lastReceiveTime }}</th>
+                                <th>{{ alert.duplicateCount }}</th>
+                                <th>
+                                    {% for line in alert.service %}
+                                        {{ line }}
+                                    {% endfor %}
+                                </th>
+                                <th>{{ alert.resource }}</th>
+                                <th>{{ alert.event }}</th>
+                                <th>{{ alert.value }}</th>
+                                <th>{{ alert.text }}</th>
                                 </tr>
                             {% endfor %}
 
-                            </tbody>
-                        </table>
-                    </div>
+                    </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
         </div>
 
         <!-- /.box-body -->

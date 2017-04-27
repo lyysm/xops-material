@@ -6,23 +6,13 @@
 <div class="modal-body">
 
     <div>
-        <table id="alert-list" class="table table-bordered table-striped " width="100%">
+        <table id="alert-details" class="table table-bordered table-striped " width="100%">
             <thead>
             </thead>
             <tbody>
             <tr>
                 <th>Alert ID</th>
                 <td>{{ alert.id }}</td>
-            </tr>
-            <tr>
-                <th>Last Receive Alert ID</th>
-                <td>{{ alert.lastReceiveId }}</td>
-
-            </tr>
-            <tr>
-                <th>Alert ID</th>
-                <td>{{ alert.id }}</td>
-
             </tr>
             <tr>
                 <th>Last Receive Alert ID</th>
@@ -53,7 +43,7 @@
                 <th>service</th>
                 <td>
                     {% for line in alert.service %}
-                    {{ line }}
+                        {{ line }}
                     {% endfor %}
                 </td>
 
@@ -139,6 +129,28 @@
 
             </tr>
             </tbody>
+        </table>
+        <table id="alert-history" class="table table-bordered table-striped " width="100%">
+            <tr>
+                <!--th><b>Alert ID</b></th-->
+                <th><b>Update Time</b></th>
+                <th><b>Change</b></th>
+                <th><b>Type</b></th>
+                <th><b>Event</b></th>
+                <th><b>Value</b></th>
+                <th><b>Text</b></th>
+            </tr>
+            {% for line in alert.history %}
+                <tr {{ alert.color }}>
+                    <!--th>{{ line.id }}</th-->
+                    <th>{{ line.updateTime }}</th>
+                    <th>{{ line.status }}{{ line.severity }}</th>
+                    <th>{{ line.type }}</th>
+                    <th>{{ line.event }}</th>
+                    <th>{{ line.value }}</th>
+                    <th>{{ line.text }}</th>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 </div>

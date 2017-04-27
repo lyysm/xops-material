@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashboard',
+    'alert',
 ]
 
 MIDDLEWARE = [
@@ -107,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -120,11 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "common_static"),
-)
-STATICFILES_FINDERS = (
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+
+################
+# alert
+ALERT_SERVER = 'http://127.0.0.1:8080'
+# cmdb
+IDC_JSON = 'static/cmdb/data/idc.json'

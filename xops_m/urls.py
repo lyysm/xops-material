@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('dashboard.urls')),
     url(r'^alert/', include('alert.urls')),
+    url(r'^cmdb/', include('cmdb.urls'))
 ]
